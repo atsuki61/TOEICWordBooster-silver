@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEIC単語カード</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TOEIC必須100単語</h1>
+        
+        <div class="controls">
+            <button id="showAll" class="active">すべて</button>
+            <button id="showRemembered">覚えた</button>
+            <button id="showNotRemembered">覚えていない</button>
+        </div>
+        
+        <div class="stats">
+            <span id="progress">0/100 単語を覚えました</span>
+        </div>
+        
+        <div class="card-container">
+            <div class="navigation">
+                <button id="prevCard">前へ</button>
+                <span id="cardIndex">1/100</span>
+                <button id="nextCard">次へ</button>
+            </div>
+            
+            <div class="flashcard">
+                <div class="card" id="currentCard">
+                    <span class="status-indicator"></span>
+                    <div class="front">
+                        <p class="word">単語読込中...</p>
+                    </div>
+                    <div class="back">
+                        <p class="meaning">意味読込中...</p>
+                        <p class="example">例文読込中...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-actions">
+                <button id="flipCard">カードをめくる</button>
+                <button id="markRemembered">覚えた</button>
+                <button id="markNotRemembered">覚えていない</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
