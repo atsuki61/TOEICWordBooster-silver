@@ -1,730 +1,650 @@
-// 単語データ
-const vocabData = [
-  {
-    word: "certificate",
-    meaning: "証明書；資格証明書",
-    example: "She received a certificate after completing the course.",
-  },
-  {
-    word: "storage",
-    meaning: "保管；貯蔵；倉庫",
-    example: "We need more storage space for our equipment.",
-  },
-  {
-    word: "administrative",
-    meaning: "管理の；行政の",
-    example: "He works in the administrative department.",
-  },
-  {
-    word: "banquet",
-    meaning: "宴会；祝宴",
-    example: "The company hosted a banquet for its employees.",
-  },
-  {
-    word: "retail",
-    meaning: "小売り；小売りの",
-    example: "She works in retail sales.",
-  },
-  {
-    word: "ingredient",
-    meaning: "材料；成分",
-    example: "This recipe requires five ingredients.",
-  },
-  {
-    word: "inquiry",
-    meaning: "問い合わせ；調査",
-    example: "We received an inquiry about our services.",
-  },
-  {
-    word: "accommodate",
-    meaning: "収容する；宿泊させる",
-    example: "The hotel can accommodate up to 200 guests.",
-  },
-  {
-    word: "generate",
-    meaning: "生み出す；発生させる",
-    example: "The new system will generate more revenue.",
-  },
-  {
-    word: "affordable",
-    meaning: "手頃な価格の；買える",
-    example: "We offer affordable housing options.",
-  },
-  {
-    word: "authorize",
-    meaning: "権限を与える；認可する",
-    example: "Only managers are authorized to approve expenses.",
-  },
-  {
-    word: "summary",
-    meaning: "要約；概要",
-    example: "Please provide a summary of the meeting.",
-  },
-  {
-    word: "valid",
-    meaning: "有効な；正当な",
-    example: "Your passport must be valid for at least six months.",
-  },
-  {
-    word: "tourism",
-    meaning: "観光；観光業",
-    example: "Tourism is the main industry in this region.",
-  },
-  {
-    word: "equip",
-    meaning: "装備する；備え付ける",
-    example: "The lab is equipped with the latest technology.",
-  },
-  {
-    word: "revenue",
-    meaning: "収入；収益",
-    example: "The company reported increased revenue this year.",
-  },
-  {
-    word: "inexpensive",
-    meaning: "安価な；手ごろな",
-    example: "We found an inexpensive hotel for our stay.",
-  },
-  {
-    word: "exceptional",
-    meaning: "例外的な；優れた",
-    example: "She has exceptional skills in mathematics.",
-  },
-  {
-    word: "hallway",
-    meaning: "廊下；玄関の間",
-    example: "The children were playing in the hallway.",
-  },
-  {
-    word: "circulation",
-    meaning: "循環；発行部数",
-    example: "Exercise improves blood circulation.",
-  },
-  {
-    word: "complicated",
-    meaning: "複雑な；込み入った",
-    example: "The instructions are too complicated to follow.",
-  },
-  {
-    word: "dedicated",
-    meaning: "専用の；献身的な",
-    example: "He is dedicated to his work.",
-  },
-  {
-    word: "mentoring",
-    meaning: "指導；助言",
-    example: "The company has a mentoring program for new employees.",
-  },
-  {
-    word: "nutrition",
-    meaning: "栄養；栄養学",
-    example: "Good nutrition is essential for health.",
-  },
-  {
-    word: "accessible",
-    meaning: "利用できる；分かりやすい",
-    example: "The building is accessible to wheelchair users.",
-  },
-  {
-    word: "coverage",
-    meaning: "報道；保険の適用範囲",
-    example: "The news channel provided extensive coverage of the event.",
-  },
-  {
-    word: "motivate",
-    meaning: "動機付ける；奮起させる",
-    example: "Good leaders know how to motivate their team.",
-  },
-  {
-    word: "refreshment",
-    meaning: "軽食；飲み物",
-    example: "Refreshments will be served after the meeting.",
-  },
-  {
-    word: "cashier",
-    meaning: "レジ係",
-    example: "She works as a cashier at the supermarket.",
-  },
-  {
-    word: "transaction",
-    meaning: "取引；処理",
-    example: "The bank processed the transaction immediately.",
-  },
-  {
-    word: "acknowledge",
-    meaning: "認める；確認する",
-    example: "He acknowledged receiving the package.",
-  },
-  {
-    word: "nomination",
-    meaning: "指名；推薦",
-    example: "She received a nomination for the award.",
-  },
-  {
-    word: "overtime",
-    meaning: "残業；延長戦",
-    example: "I had to work overtime to finish the project.",
-  },
-  {
-    word: "premises",
-    meaning: "建物；敷地",
-    example: "Smoking is not allowed on the premises.",
-  },
-  {
-    word: "reliable",
-    meaning: "信頼できる；確かな",
-    example: "He is a reliable worker who never misses deadlines.",
-  },
-  {
-    word: "utility",
-    meaning: "公共事業；実用性",
-    example: "The utility bills have increased this month.",
-  },
-  {
-    word: "blueprint",
-    meaning: "青写真；設計図",
-    example: "The architects presented the blueprint for the new building.",
-  },
-  {
-    word: "compensation",
-    meaning: "報酬；補償",
-    example: "She received compensation for her injuries.",
-  },
-  {
-    word: "exclusive",
-    meaning: "独占的な；排他的な",
-    example: "The hotel offers exclusive access to the beach.",
-  },
-  {
-    word: "consistently",
-    meaning: "一貫して；常に",
-    example: "She has performed consistently well this season.",
-  },
-  {
-    word: "update",
-    meaning: "更新する；最新情報",
-    example: "Please update your software to the latest version.",
-  },
-  {
-    word: "submission",
-    meaning: "提出；服従",
-    example: "The deadline for submission is next Friday.",
-  },
-  {
-    word: "subscription",
-    meaning: "購読；会員資格",
-    example: "I have a subscription to several magazines.",
-  },
-  {
-    word: "appliance",
-    meaning: "電化製品；器具",
-    example: "Kitchen appliances are on sale this week.",
-  },
-  {
-    word: "brochure",
-    meaning: "パンフレット；案内書",
-    example: "The travel brochure describes various tour packages.",
-  },
-  {
-    word: "feedback",
-    meaning: "フィードバック；反応",
-    example: "We appreciate your feedback on our services.",
-  },
-  {
-    word: "merchandise",
-    meaning: "商品；商品化する",
-    example: "The store sells sports merchandise.",
-  },
-  {
-    word: "supplier",
-    meaning: "供給者；納入業者",
-    example: "We need to find a new supplier for office equipment.",
-  },
-  {
-    word: "catering",
-    meaning: "ケータリング；出前",
-    example: "The company provides catering for special events.",
-  },
-  {
-    word: "agenda",
-    meaning: "議題；予定表",
-    example: "The meeting agenda has been distributed.",
-  },
-  {
-    word: "fabric",
-    meaning: "生地；織物",
-    example: "This fabric is perfect for summer clothing.",
-  },
-  {
-    word: "lease",
-    meaning: "賃貸契約；借りる",
-    example: "We signed a one-year lease for the apartment.",
-  },
-  {
-    word: "beverage",
-    meaning: "飲み物",
-    example: "The restaurant offers a variety of beverages.",
-  },
-  {
-    word: "prior",
-    meaning: "前の；優先する",
-    example: "Prior experience is required for this position.",
-  },
-  {
-    word: "inconvenience",
-    meaning: "不便；迷惑",
-    example: "We apologize for any inconvenience caused.",
-  },
-  {
-    word: "innovative",
-    meaning: "革新的な",
-    example: "The company is known for its innovative products.",
-  },
-  {
-    word: "luncheon",
-    meaning: "昼食会",
-    example: "A luncheon was held to honor the retiring employees.",
-  },
-  {
-    word: "auditorium",
-    meaning: "講堂；大ホール",
-    example: "The graduation ceremony will be held in the auditorium.",
-  },
-  {
-    word: "qualified",
-    meaning: "資格のある；適任の",
-    example: "She is highly qualified for the position.",
-  },
-  {
-    word: "souvenir",
-    meaning: "お土産；記念品",
-    example: "I bought a souvenir for my friend.",
-  },
-  {
-    word: "comprehensive",
-    meaning: "包括的な；総合的な",
-    example: "The report provides a comprehensive analysis of the market.",
-  },
-  {
-    word: "plumbing",
-    meaning: "配管；水道設備",
-    example: "We need to call a plumber to fix the plumbing.",
-  },
-  {
-    word: "enhance",
-    meaning: "高める；強化する",
-    example: "These features enhance the performance of the software.",
-  },
-  {
-    word: "intersection",
-    meaning: "交差点；交わり",
-    example: "The accident occurred at the intersection.",
-  },
-  {
-    word: "supervisor",
-    meaning: "監督者；上司",
-    example: "Please report any issues to your supervisor.",
-  },
-  {
-    word: "shipment",
-    meaning: "出荷；積荷",
-    example: "The shipment will arrive next week.",
-  },
-  {
-    word: "invoice",
-    meaning: "請求書",
-    example: "We haven't received the invoice yet.",
-  },
-  {
-    word: "notify",
-    meaning: "通知する；知らせる",
-    example: "Please notify us of any changes to your address.",
-  },
-  {
-    word: "warehouse",
-    meaning: "倉庫",
-    example: "The products are stored in our warehouse.",
-  },
-  {
-    word: "upgrade",
-    meaning: "アップグレードする",
-    example: "It's time to upgrade your computer system.",
-  },
-  {
-    word: "orientation",
-    meaning: "オリエンテーション；方向",
-    example: "New employees must attend the orientation session.",
-  },
-  {
-    word: "directory",
-    meaning: "名簿；ディレクトリ",
-    example: "His name is listed in the company directory.",
-  },
-  {
-    word: "expire",
-    meaning: "期限切れになる",
-    example: "Your passport will expire next month.",
-  },
-  {
-    word: "merger",
-    meaning: "合併",
-    example: "The merger between the two companies was announced today.",
-  },
-  {
-    word: "quarterly",
-    meaning: "四半期の；四半期ごとに",
-    example: "The company releases quarterly financial reports.",
-  },
-  {
-    word: "questionnaire",
-    meaning: "アンケート",
-    example: "Please complete this questionnaire about our service.",
-  },
-  {
-    word: "defective",
-    meaning: "欠陥のある；不完全な",
-    example: "The store replaced the defective product.",
-  },
-  {
-    word: "workplace",
-    meaning: "職場",
-    example: "Harassment is not tolerated in the workplace.",
-  },
-  {
-    word: "enroll",
-    meaning: "登録する；入学する",
-    example: "You can enroll in the course online.",
-  },
-  {
-    word: "pharmacy",
-    meaning: "薬局；調剤学",
-    example: "You can get this prescription filled at any pharmacy.",
-  },
-  {
-    word: "spacious",
-    meaning: "広々とした",
-    example: "The apartment is very spacious and comfortable.",
-  },
-  {
-    word: "landmark",
-    meaning: "目印；名所",
-    example: "The Eiffel Tower is a famous landmark in Paris.",
-  },
-  {
-    word: "commute",
-    meaning: "通勤する；往復する",
-    example: "He commutes two hours each day to work.",
-  },
-  {
-    word: "medication",
-    meaning: "薬；投薬",
-    example: "Take this medication twice daily after meals.",
-  },
-  {
-    word: "discontinued",
-    meaning: "廃止された；中止された",
-    example: "This model has been discontinued by the manufacturer.",
-  },
-  {
-    word: "portfolio",
-    meaning: "ポートフォリオ；作品集",
-    example: "She showed us her design portfolio during the interview.",
-  },
-  {
-    word: "warranty",
-    meaning: "保証；保証書",
-    example: "The product comes with a two-year warranty.",
-  },
-  {
-    word: "refund",
-    meaning: "返金；払い戻し",
-    example: "If you're not satisfied, we'll issue a full refund.",
-  },
-  {
-    word: "inventory",
-    meaning: "在庫；目録",
-    example: "We need to check the inventory before ordering more supplies.",
-  },
-  {
-    word: "renowned",
-    meaning: "名高い；有名な",
-    example: "She is a renowned expert in her field.",
-  },
-  {
-    word: "vendor",
-    meaning: "販売業者；売り手",
-    example: "The vendor refused to lower the price.",
-  },
-  {
-    word: "publicize",
-    meaning: "公表する；宣伝する",
-    example: "The company will publicize the new product next month.",
-  },
-  {
-    word: "tuition",
-    meaning: "授業料；指導",
-    example: "College tuition has increased significantly.",
-  },
-  {
-    word: "complimentary",
-    meaning: "無料の；賛辞の",
-    example: "The hotel offers complimentary breakfast.",
-  },
-  {
-    word: "eligible",
-    meaning: "適格な；資格のある",
-    example: "Are you eligible for a student discount?",
-  },
-  {
-    word: "fund-raising",
-    meaning: "資金調達",
-    example: "The organization held a fund-raising event.",
-  },
-  {
-    word: "payroll",
-    meaning: "給与支払い名簿；給料",
-    example: "The accountant prepares the payroll every month.",
-  },
-  {
-    word: "reimbursement",
-    meaning: "払い戻し；弁済",
-    example: "Submit your receipts for reimbursement of expenses.",
-  },
-  {
-    word: "itinerary",
-    meaning: "旅程；旅行日程",
-    example: "The travel agent prepared our itinerary.",
-  },
-  {
-    word: "endeavor",
-    meaning: "努力；試み",
-    example: "Scientific endeavor has led to many discoveries.",
-  },
-];
+// グローバル変数とデータ管理
+let allWords = []; // 全ての単語データ
+let currentWords = []; // 現在の絞り込み条件に合致する単語
+let currentIndex = 0; // 現在表示中の単語のインデックス
+let isFlipped = false; // カードがめくられているかどうか
+let isRandomMode = false; // ランダム表示モードかどうか
+
+// 学習ステータスの定義
+const STATUS = {
+  UNLEARNED: "unlearned",
+  REVIEW: "review",
+  LEARNED: "learned",
+};
+
+// 絞り込み条件
+let filterConditions = {
+  categories: [],
+  statuses: [STATUS.UNLEARNED, STATUS.REVIEW, STATUS.LEARNED],
+};
 
 // DOM要素の取得
-const cardElement = document.getElementById("currentCard");
-const wordElement = document.querySelector(".word");
-const meaningElement = document.querySelector(".meaning");
-const exampleElement = document.querySelector(".example");
-const flipButton = document.getElementById("flipCard");
-const nextButton = document.getElementById("nextCard");
-const prevButton = document.getElementById("prevCard");
-const cardIndexElement = document.getElementById("cardIndex");
-const markRememberedButton = document.getElementById("markRemembered");
-const markNotRememberedButton = document.getElementById("markNotRemembered");
-const progressElement = document.getElementById("progress");
-const showAllButton = document.getElementById("showAll");
-const showRememberedButton = document.getElementById("showRemembered");
-const showNotRememberedButton = document.getElementById("showNotRemembered");
-const statusIndicator = cardElement.querySelector(".status-indicator");
+const elements = {
+  // カード関連
+  flashcard: document.getElementById("flashcard"),
+  wordNumber: document.getElementById("wordNumber"),
+  word: document.getElementById("word"),
+  wordNumberBack: document.getElementById("wordNumberBack"),
+  wordBack: document.getElementById("wordBack"),
+  category: document.getElementById("category"),
+  meanings: document.getElementById("meanings"),
+  examples: document.getElementById("examples"),
+  statusIndicator: document.getElementById("statusIndicator"),
 
-// 状態管理
-let currentCardIndex = 0;
-let filteredCards = [...vocabData];
-let rememberedStatus = loadRememberedStatus();
+  // コントロール関連
+  prevButton: document.getElementById("prevButton"),
+  nextButton: document.getElementById("nextButton"),
+  flipButton: document.getElementById("flipButton"),
+  randomMode: document.getElementById("randomMode"),
+  jumpInput: document.getElementById("jumpInput"),
+  jumpButton: document.getElementById("jumpButton"),
 
-// 初期表示
-updateCard();
-updateProgress();
+  // ステータスボタン
+  statusUnlearned: document.getElementById("statusUnlearned"),
+  statusReview: document.getElementById("statusReview"),
+  statusLearned: document.getElementById("statusLearned"),
 
-// カードをめくる
-flipButton.addEventListener("click", () => {
-  cardElement.classList.toggle("flipped");
-});
+  // 絞り込み関連
+  filterButton: document.getElementById("filterButton"),
+  filterModal: document.getElementById("filterModal"),
+  overlay: document.getElementById("overlay"),
+  closeModal: document.getElementById("closeModal"),
+  categoryFilters: document.getElementById("categoryFilters"),
+  statusFilters: document.getElementById("statusFilters"),
+  applyFilters: document.getElementById("applyFilters"),
+  resetFilters: document.getElementById("resetFilters"),
 
-// カードをクリックしてもめくれるようにする
-cardElement.addEventListener("click", () => {
-  cardElement.classList.toggle("flipped");
-});
+  // 情報表示
+  progressInfo: document.getElementById("progressInfo"),
+  cardPosition: document.getElementById("cardPosition"),
+  errorMessage: document.getElementById("errorMessage"),
+};
 
-// 次のカードへ
-nextButton.addEventListener("click", () => {
-  if (currentCardIndex < filteredCards.length - 1) {
-    currentCardIndex++;
-  } else {
-    currentCardIndex = 0;
+// アプリケーション初期化
+async function init() {
+  try {
+    showMessage("単語データを読み込み中...", "info");
+
+    // データファイルの読み込み
+    await loadWords();
+
+    // ローカルストレージから学習状況を復元
+    loadLearningStatus();
+
+    // 絞り込み条件を復元
+    loadFilterConditions();
+
+    // カテゴリフィルターの生成
+    generateCategoryFilters();
+
+    // 初期表示の更新
+    applyFilters();
+
+    // イベントリスナーの設定
+    setupEventListeners();
+
+    // 最初のカードを表示
+    updateCardView();
+
+    showMessage("データの読み込みが完了しました", "success");
+  } catch (error) {
+    console.error("初期化エラー:", error);
+    showMessage("データの読み込みに失敗しました", "error");
   }
-  cardElement.classList.remove("flipped");
-  updateCard();
-});
+}
 
-// 前のカードへ
-prevButton.addEventListener("click", () => {
-  if (currentCardIndex > 0) {
-    currentCardIndex--;
-  } else {
-    currentCardIndex = filteredCards.length - 1;
+// 単語データの読み込みとパース
+async function loadWords() {
+  try {
+    const response = await fetch("data/gin_no_phrase.txt");
+    if (!response.ok) {
+      throw new Error(`HTTPエラー: ${response.status}`);
+    }
+
+    const text = await response.text();
+    allWords = parseWordsData(text);
+
+    if (allWords.length === 0) {
+      throw new Error("有効な単語データが見つかりませんでした");
+    }
+
+    console.log(`${allWords.length}個の単語を読み込みました`);
+  } catch (error) {
+    console.error("ファイル読み込みエラー:", error);
+    throw error;
   }
-  cardElement.classList.remove("flipped");
-  updateCard();
-});
+}
 
-// 覚えたボタン
-markRememberedButton.addEventListener("click", () => {
-  const currentWord = filteredCards[currentCardIndex].word;
-  rememberedStatus[currentWord] = true;
-  saveRememberedStatus();
-  updateProgress();
+// テキストデータのパース処理
+function parseWordsData(text) {
+  const lines = text.split("\n");
+  const words = [];
 
-  // フィルタが「覚えていない」の場合は次のカードへ
-  if (showNotRememberedButton.classList.contains("active")) {
-    applyFilter("notRemembered");
-    if (filteredCards.length === 0) {
-      // すべて覚えた場合
-      showAllButton.click();
-    } else if (currentCardIndex >= filteredCards.length) {
-      currentCardIndex = 0;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+
+    // 空行をスキップ
+    if (!line) continue;
+
+    // 通し番号の行（タブ文字を含む）
+    if (line.includes("\t")) {
+      const [id] = line.split("\t");
+
+      // 次の行が単語情報
+      if (i + 1 < lines.length) {
+        const wordLine = lines[i + 1].trim();
+
+        // 日本語のみの行（Supplement4など）をスキップ
+        if (!/[a-zA-Z]/.test(wordLine)) {
+          continue;
+        }
+
+        // 単語番号と英単語を分離
+        const wordMatch = wordLine.match(/^(\d+)\s*-\s*(.+)$/);
+        if (wordMatch) {
+          const [, wordNumber, englishWord] = wordMatch;
+
+          // カテゴリ名（次の行）
+          let categoryName = "";
+          if (i + 2 < lines.length) {
+            categoryName = lines[i + 2].trim();
+          }
+
+          words.push({
+            id: parseInt(id),
+            wordNumber: wordNumber.padStart(3, "0"),
+            word: englishWord.trim(),
+            category: categoryName,
+            status: STATUS.UNLEARNED,
+            meanings: [], // word_details.jsonがない場合は空配列
+            examples: [], // word_details.jsonがない場合は空配列
+          });
+        }
+      }
     }
   }
 
-  updateCard();
-});
+  return words;
+}
 
-// 覚えていないボタン
-markNotRememberedButton.addEventListener("click", () => {
-  const currentWord = filteredCards[currentCardIndex].word;
-  rememberedStatus[currentWord] = false;
-  saveRememberedStatus();
-  updateProgress();
-
-  // フィルタが「覚えた」の場合は次のカードへ
-  if (showRememberedButton.classList.contains("active")) {
-    applyFilter("remembered");
-    if (filteredCards.length === 0) {
-      // 覚えたものがない場合
-      showAllButton.click();
-    } else if (currentCardIndex >= filteredCards.length) {
-      currentCardIndex = 0;
+// ローカルストレージから学習状況を復元
+function loadLearningStatus() {
+  const savedStatus = localStorage.getItem("ginPhrase_learningStatus");
+  if (savedStatus) {
+    try {
+      const statusData = JSON.parse(savedStatus);
+      allWords.forEach((word) => {
+        if (statusData[word.id]) {
+          word.status = statusData[word.id];
+        }
+      });
+    } catch (error) {
+      console.error("学習状況の復元に失敗:", error);
     }
   }
+}
 
-  updateCard();
-});
+// 学習状況をローカルストレージに保存
+function saveLearningStatus() {
+  const statusData = {};
+  allWords.forEach((word) => {
+    statusData[word.id] = word.status;
+  });
+  localStorage.setItem("ginPhrase_learningStatus", JSON.stringify(statusData));
+}
 
-// フィルタボタンのイベント
-showAllButton.addEventListener("click", () => {
-  setActiveFilter(showAllButton);
-  applyFilter("all");
-});
+// 絞り込み条件を復元
+function loadFilterConditions() {
+  const savedFilters = localStorage.getItem("ginPhrase_filterConditions");
+  if (savedFilters) {
+    try {
+      filterConditions = JSON.parse(savedFilters);
+    } catch (error) {
+      console.error("絞り込み条件の復元に失敗:", error);
+    }
+  }
+}
 
-showRememberedButton.addEventListener("click", () => {
-  setActiveFilter(showRememberedButton);
-  applyFilter("remembered");
-});
+// 絞り込み条件を保存
+function saveFilterConditions() {
+  localStorage.setItem(
+    "ginPhrase_filterConditions",
+    JSON.stringify(filterConditions)
+  );
+}
 
-showNotRememberedButton.addEventListener("click", () => {
-  setActiveFilter(showNotRememberedButton);
-  applyFilter("notRemembered");
-});
+// カテゴリフィルターの生成
+function generateCategoryFilters() {
+  const categories = [...new Set(allWords.map((word) => word.category))].filter(
+    (cat) => cat
+  );
 
-// フィルタを適用
-function applyFilter(filter) {
-  switch (filter) {
-    case "all":
-      filteredCards = [...vocabData];
-      break;
-    case "remembered":
-      filteredCards = vocabData.filter(
-        (card) => rememberedStatus[card.word] === true
-      );
-      break;
-    case "notRemembered":
-      filteredCards = vocabData.filter(
-        (card) => rememberedStatus[card.word] !== true
-      );
-      break;
+  elements.categoryFilters.innerHTML = "";
+  categories.forEach((category) => {
+    const label = document.createElement("label");
+    label.className = "checkbox-label";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = category;
+    checkbox.checked =
+      filterConditions.categories.length === 0 ||
+      filterConditions.categories.includes(category);
+
+    label.appendChild(checkbox);
+    label.appendChild(document.createTextNode(category));
+    elements.categoryFilters.appendChild(label);
+  });
+}
+
+// 絞り込み条件の適用
+function applyFilters() {
+  // カテゴリフィルター
+  let filteredWords = allWords;
+  if (filterConditions.categories.length > 0) {
+    filteredWords = filteredWords.filter((word) =>
+      filterConditions.categories.includes(word.category)
+    );
   }
 
-  currentCardIndex = 0;
-  cardElement.classList.remove("flipped");
-  updateCard();
+  // ステータスフィルター
+  if (filterConditions.statuses.length > 0) {
+    filteredWords = filteredWords.filter((word) =>
+      filterConditions.statuses.includes(word.status)
+    );
+  }
+
+  currentWords = filteredWords;
+  currentIndex = 0;
+
+  updateProgressInfo();
+  updateCardView();
 }
 
-// アクティブフィルタを設定
-function setActiveFilter(button) {
-  showAllButton.classList.remove("active");
-  showRememberedButton.classList.remove("active");
-  showNotRememberedButton.classList.remove("active");
-  button.classList.add("active");
+// 進捗情報の更新
+function updateProgressInfo() {
+  const totalWords = allWords.length;
+  const learnedCount = allWords.filter(
+    (word) => word.status === STATUS.LEARNED
+  ).length;
+  const currentCount = currentWords.length;
+
+  elements.progressInfo.textContent = `学習済み: ${learnedCount}/${totalWords} | 表示中: ${currentCount}語`;
+
+  if (currentWords.length > 0) {
+    elements.cardPosition.textContent = `${currentIndex + 1} / ${
+      currentWords.length
+    }`;
+  } else {
+    elements.cardPosition.textContent = "0 / 0";
+  }
 }
 
-// カード情報を更新
-function updateCard() {
-  if (filteredCards.length === 0) {
-    wordElement.textContent = "カードがありません";
-    meaningElement.textContent = "";
-    exampleElement.textContent = "";
-    cardIndexElement.textContent = "0/0";
+// カード表示の更新
+function updateCardView() {
+  if (currentWords.length === 0) {
+    showEmptyState();
     return;
   }
 
-  const card = filteredCards[currentCardIndex];
-  wordElement.textContent = card.word;
-  meaningElement.textContent = card.meaning;
-  exampleElement.textContent = card.example;
-  cardIndexElement.textContent = `${currentCardIndex + 1}/${
-    filteredCards.length
-  }`;
+  const currentWord = currentWords[currentIndex];
 
-  // 覚えた/覚えてないのスタイル適用
-  if (rememberedStatus[card.word] === true) {
-    markRememberedButton.style.opacity = "1";
-    markNotRememberedButton.style.opacity = "0.5";
-  } else {
-    markRememberedButton.style.opacity = "0.5";
-    markNotRememberedButton.style.opacity = "1";
+  // 表面の更新
+  elements.wordNumber.textContent = currentWord.wordNumber;
+  elements.word.textContent = currentWord.word;
+
+  // 裏面の更新
+  elements.wordNumberBack.textContent = currentWord.wordNumber;
+  elements.wordBack.textContent = currentWord.word;
+  elements.category.textContent = currentWord.category;
+
+  // 意味と例文の表示
+  updateMeaningsAndExamples(currentWord);
+
+  // ステータスインジケーターの更新
+  updateStatusIndicator(currentWord.status);
+
+  // ステータスボタンの更新
+  updateStatusButtons(currentWord.status);
+
+  // カードを表面に戻す
+  if (isFlipped) {
+    flipCard();
   }
 
-  // ステータスインジケーター更新
-  statusIndicator.classList.remove("remembered", "not-remembered");
-  if (rememberedStatus[card.word] === true) {
-    statusIndicator.textContent = "〇";
-    statusIndicator.classList.add("remembered");
-  } else if (rememberedStatus[card.word] === false) {
-    statusIndicator.textContent = "×";
-    statusIndicator.classList.add("not-remembered");
+  // 進捗情報の更新
+  updateProgressInfo();
+}
+
+// 意味と例文の表示更新
+function updateMeaningsAndExamples(word) {
+  // 意味の表示
+  if (word.meanings && word.meanings.length > 0) {
+    elements.meanings.innerHTML = "";
+    word.meanings.forEach((meaning) => {
+      const div = document.createElement("div");
+      div.className = "meaning-item";
+      div.textContent = `${meaning.meaning} (${meaning.pos})`;
+      elements.meanings.appendChild(div);
+    });
   } else {
-    statusIndicator.textContent = "";
+    elements.meanings.innerHTML =
+      '<div class="meaning-item">意味情報がありません</div>';
+  }
+
+  // 例文の表示
+  if (word.examples && word.examples.length > 0) {
+    elements.examples.innerHTML = "";
+    word.examples.forEach((example) => {
+      const div = document.createElement("div");
+      div.className = "example-item";
+      div.innerHTML = `
+                <div class="example-en">${example.sentence_en}</div>
+                <div class="example-ja">${example.sentence_ja}</div>
+            `;
+      elements.examples.appendChild(div);
+    });
+  } else {
+    elements.examples.innerHTML =
+      '<div class="example-item">例文情報がありません</div>';
   }
 }
 
-// 進捗を更新
-function updateProgress() {
-  const remembered = Object.values(rememberedStatus).filter(
-    (status) => status === true
-  ).length;
-  progressElement.textContent = `${remembered}/${vocabData.length} 単語を覚えました`;
+// 空状態の表示
+function showEmptyState() {
+  elements.wordNumber.textContent = "---";
+  elements.word.textContent = "表示する単語がありません";
+  elements.cardPosition.textContent = "0 / 0";
 }
 
-// ローカルストレージから状態を読み込む
-function loadRememberedStatus() {
-  const storedStatus = localStorage.getItem("rememberedStatus");
-  return storedStatus ? JSON.parse(storedStatus) : {};
+// ステータスインジケーターの更新
+function updateStatusIndicator(status) {
+  elements.statusIndicator.className = "status-indicator";
+  elements.statusIndicator.classList.add(status);
 }
 
-// ローカルストレージに状態を保存
-function saveRememberedStatus() {
-  localStorage.setItem("rememberedStatus", JSON.stringify(rememberedStatus));
+// ステータスボタンの更新
+function updateStatusButtons(status) {
+  // 全てのボタンからactiveクラスを削除
+  elements.statusUnlearned.classList.remove("active");
+  elements.statusReview.classList.remove("active");
+  elements.statusLearned.classList.remove("active");
+
+  // 現在のステータスに対応するボタンをアクティブにする
+  switch (status) {
+    case STATUS.UNLEARNED:
+      elements.statusUnlearned.classList.add("active");
+      break;
+    case STATUS.REVIEW:
+      elements.statusReview.classList.add("active");
+      break;
+    case STATUS.LEARNED:
+      elements.statusLearned.classList.add("active");
+      break;
+  }
 }
 
-// キーボードショートカット
-document.addEventListener("keydown", (e) => {
+// カードめくり処理
+function flipCard() {
+  elements.flashcard.classList.toggle("flipped");
+  isFlipped = !isFlipped;
+
+  // ボタンテキストの更新
+  elements.flipButton.textContent = isFlipped ? "カードを戻す" : "答えを見る";
+}
+
+// 次の単語へ移動
+function nextWord() {
+  if (currentWords.length === 0) return;
+
+  if (isRandomMode) {
+    // ランダム表示
+    const randomIndex = Math.floor(Math.random() * currentWords.length);
+    currentIndex = randomIndex;
+  } else {
+    // 順次表示
+    currentIndex = (currentIndex + 1) % currentWords.length;
+  }
+
+  updateCardView();
+}
+
+// 前の単語へ移動
+function prevWord() {
+  if (currentWords.length === 0) return;
+
+  if (isRandomMode) {
+    // ランダム表示
+    const randomIndex = Math.floor(Math.random() * currentWords.length);
+    currentIndex = randomIndex;
+  } else {
+    // 順次表示
+    currentIndex =
+      (currentIndex - 1 + currentWords.length) % currentWords.length;
+  }
+
+  updateCardView();
+}
+
+// 単語番号でジャンプ
+function jumpToWord() {
+  const wordId = parseInt(elements.jumpInput.value);
+  if (isNaN(wordId) || wordId < 1) {
+    showMessage("有効な単語番号を入力してください", "error");
+    return;
+  }
+
+  // allWordsから該当する単語を検索
+  const targetWord = allWords.find((word) => word.id === wordId);
+  if (!targetWord) {
+    showMessage("指定された単語番号が見つかりません", "error");
+    return;
+  }
+
+  // currentWordsに含まれているかチェック
+  const targetIndex = currentWords.findIndex((word) => word.id === wordId);
+  if (targetIndex === -1) {
+    showMessage(
+      "指定された単語は現在の絞り込み条件に含まれていません",
+      "error"
+    );
+    return;
+  }
+
+  currentIndex = targetIndex;
+  updateCardView();
+  elements.jumpInput.value = "";
+}
+
+// 学習ステータスの変更
+function changeStatus(newStatus) {
+  if (currentWords.length === 0) return;
+
+  const currentWord = currentWords[currentIndex];
+  currentWord.status = newStatus;
+
+  // allWordsの対応する項目も更新
+  const allWordIndex = allWords.findIndex((word) => word.id === currentWord.id);
+  if (allWordIndex !== -1) {
+    allWords[allWordIndex].status = newStatus;
+  }
+
+  updateStatusIndicator(newStatus);
+  updateStatusButtons(newStatus);
+  saveLearningStatus();
+  updateProgressInfo();
+}
+
+// モーダルの表示/非表示
+function showModal() {
+  elements.filterModal.classList.add("show");
+  elements.overlay.classList.add("show");
+
+  // 現在の絞り込み条件をモーダルに反映
+  updateModalFilters();
+}
+
+function hideModal() {
+  elements.filterModal.classList.remove("show");
+  elements.overlay.classList.remove("show");
+}
+
+// モーダルの絞り込み条件を更新
+function updateModalFilters() {
+  // カテゴリフィルター
+  const categoryCheckboxes = elements.categoryFilters.querySelectorAll(
+    'input[type="checkbox"]'
+  );
+  categoryCheckboxes.forEach((checkbox) => {
+    checkbox.checked =
+      filterConditions.categories.length === 0 ||
+      filterConditions.categories.includes(checkbox.value);
+  });
+
+  // ステータスフィルター
+  const statusCheckboxes = elements.statusFilters.querySelectorAll(
+    'input[type="checkbox"]'
+  );
+  statusCheckboxes.forEach((checkbox) => {
+    checkbox.checked = filterConditions.statuses.includes(checkbox.value);
+  });
+}
+
+// 絞り込み条件の適用（モーダルから）
+function applyFiltersFromModal() {
+  // カテゴリフィルター
+  const categoryCheckboxes = elements.categoryFilters.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  );
+  filterConditions.categories = Array.from(categoryCheckboxes).map(
+    (cb) => cb.value
+  );
+
+  // ステータスフィルター
+  const statusCheckboxes = elements.statusFilters.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  );
+  filterConditions.statuses = Array.from(statusCheckboxes).map(
+    (cb) => cb.value
+  );
+
+  // 条件が空の場合はアラート
+  if (
+    filterConditions.categories.length === 0 &&
+    filterConditions.statuses.length === 0
+  ) {
+    showMessage("少なくとも一つの条件を選択してください", "error");
+    return;
+  }
+
+  saveFilterConditions();
+  applyFilters();
+  hideModal();
+  showMessage("絞り込み条件を適用しました", "success");
+}
+
+// 絞り込み条件のリセット
+function resetFilters() {
+  filterConditions = {
+    categories: [],
+    statuses: [STATUS.UNLEARNED, STATUS.REVIEW, STATUS.LEARNED],
+  };
+
+  updateModalFilters();
+  saveFilterConditions();
+  applyFilters();
+  showMessage("絞り込み条件をリセットしました", "success");
+}
+
+// メッセージ表示
+function showMessage(message, type = "info") {
+  elements.errorMessage.textContent = message;
+  elements.errorMessage.classList.add("show");
+
+  // 3秒後に自動で非表示
+  setTimeout(() => {
+    elements.errorMessage.classList.remove("show");
+  }, 3000);
+}
+
+// イベントリスナーの設定
+function setupEventListeners() {
+  // カード操作
+  elements.flashcard.addEventListener("click", flipCard);
+  elements.flipButton.addEventListener("click", flipCard);
+  elements.prevButton.addEventListener("click", prevWord);
+  elements.nextButton.addEventListener("click", nextWord);
+
+  // ランダムモード
+  elements.randomMode.addEventListener("change", (e) => {
+    isRandomMode = e.target.checked;
+  });
+
+  // ジャンプ機能
+  elements.jumpButton.addEventListener("click", jumpToWord);
+  elements.jumpInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      jumpToWord();
+    }
+  });
+
+  // ステータス変更
+  elements.statusUnlearned.addEventListener("click", () =>
+    changeStatus(STATUS.UNLEARNED)
+  );
+  elements.statusReview.addEventListener("click", () =>
+    changeStatus(STATUS.REVIEW)
+  );
+  elements.statusLearned.addEventListener("click", () =>
+    changeStatus(STATUS.LEARNED)
+  );
+
+  // モーダル
+  elements.filterButton.addEventListener("click", showModal);
+  elements.closeModal.addEventListener("click", hideModal);
+  elements.overlay.addEventListener("click", hideModal);
+  elements.applyFilters.addEventListener("click", applyFiltersFromModal);
+  elements.resetFilters.addEventListener("click", resetFilters);
+
+  // キーボードショートカット
+  document.addEventListener("keydown", handleKeyboardShortcuts);
+}
+
+// キーボードショートカット処理
+function handleKeyboardShortcuts(e) {
+  // モーダルが開いている場合は無視
+  if (elements.filterModal.classList.contains("show")) return;
+
   switch (e.key) {
-    case " ": // スペースでカードをめくる
-      cardElement.classList.toggle("flipped");
+    case " ": // スペース: カードめくり
+      e.preventDefault();
+      flipCard();
       break;
-    case "ArrowRight": // 右矢印で次へ
-      nextButton.click();
+    case "ArrowRight": // 右矢印: 次の単語
+      e.preventDefault();
+      nextWord();
       break;
-    case "ArrowLeft": // 左矢印で前へ
-      prevButton.click();
+    case "ArrowLeft": // 左矢印: 前の単語
+      e.preventDefault();
+      prevWord();
       break;
-    case "r": // 'r'で覚えたとマーク
-      markRememberedButton.click();
+    case "r":
+    case "R": // R: 要復習
+      e.preventDefault();
+      changeStatus(STATUS.REVIEW);
       break;
-    case "f": // 'f'で覚えてないとマーク
-      markNotRememberedButton.click();
+    case "f":
+    case "F": // F: 覚えていない（未学習）
+      e.preventDefault();
+      changeStatus(STATUS.UNLEARNED);
+      break;
+    case "l":
+    case "L": // L: 習得済み
+      e.preventDefault();
+      changeStatus(STATUS.LEARNED);
       break;
   }
-});
+}
+
+// DOM読み込み完了後に初期化実行
+document.addEventListener("DOMContentLoaded", init);

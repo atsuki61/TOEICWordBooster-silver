@@ -1,53 +1,143 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOEIC単語カード</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>TOEIC必須100単語</h1>
-        
-        <div class="controls">
-            <button id="showAll" class="active">すべて</button>
-            <button id="showRemembered">覚えた</button>
-            <button id="showNotRemembered">覚えていない</button>
-        </div>
-        
-        <div class="stats">
-            <span id="progress">0/100 単語を覚えました</span>
-        </div>
-        
-        <div class="card-container">
-            <div class="navigation">
-                <button id="prevCard">前へ</button>
-                <span id="cardIndex">1/100</span>
-                <button id="nextCard">次へ</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>銀のフレーズ フラッシュカード</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="header">
+      <h1>銀のフレーズ フラッシュカード</h1>
+    </header>
+
+    <!-- コントロールエリア -->
+    <nav class="control-area">
+      <div class="control-group">
+        <button id="filterButton" class="btn btn-secondary">絞り込み</button>
+        <label class="checkbox-label">
+          <input type="checkbox" id="randomMode" /> ランダム表示
+        </label>
+      </div>
+
+      <div class="jump-control">
+        <input
+          type="number"
+          id="jumpInput"
+          placeholder="単語番号"
+          min="1"
+          max="1370"
+        />
+        <button id="jumpButton" class="btn btn-secondary">ジャンプ</button>
+      </div>
+    </nav>
+
+    <!-- メインエリア -->
+    <main class="main-area">
+      <!-- 進捗・情報表示 -->
+      <div class="info-display">
+        <div id="progressInfo" class="progress-info">0 / 0 単語を表示中</div>
+        <div id="cardPosition" class="card-position">1 / 1</div>
+      </div>
+
+      <!-- フラッシュカードエリア -->
+      <div class="flashcard-container">
+        <div class="flashcard" id="flashcard">
+          <!-- 表面 -->
+          <div class="card-face card-front" id="cardFront">
+            <div class="status-indicator" id="statusIndicator"></div>
+            <div class="word-display">
+              <div class="word-number" id="wordNumber">001</div>
+              <div class="word" id="word">単語読込中...</div>
             </div>
-            
-            <div class="flashcard">
-                <div class="card" id="currentCard">
-                    <span class="status-indicator"></span>
-                    <div class="front">
-                        <p class="word">単語読込中...</p>
-                    </div>
-                    <div class="back">
-                        <p class="meaning">意味読込中...</p>
-                        <p class="example">例文読込中...</p>
-                    </div>
-                </div>
+          </div>
+
+          <!-- 裏面 -->
+          <div class="card-face card-back" id="cardBack">
+            <div class="word-info">
+              <div class="word-number" id="wordNumberBack">001</div>
+              <div class="word" id="wordBack">begin</div>
+              <div class="category" id="category">基礎の400語</div>
             </div>
-            
-            <div class="card-actions">
-                <button id="flipCard">カードをめくる</button>
-                <button id="markRemembered">覚えた</button>
-                <button id="markNotRemembered">覚えていない</button>
+            <div class="meanings" id="meanings">
+              <div class="meaning-item">意味読込中...</div>
             </div>
+            <div class="examples" id="examples">
+              <div class="example-item">例文読込中...</div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- 学習ステータス -->
+      <div class="status-controls">
+        <button id="statusUnlearned" class="status-btn status-unlearned active">
+          未学習
+        </button>
+        <button id="statusReview" class="status-btn status-review">
+          要復習
+        </button>
+        <button id="statusLearned" class="status-btn status-learned">
+          習得済み
+        </button>
+      </div>
+    </main>
+
+    <!-- フッターエリア -->
+    <footer class="footer-controls">
+      <button id="prevButton" class="btn btn-primary">前へ</button>
+      <button id="flipButton" class="btn btn-accent">答えを見る</button>
+      <button id="nextButton" class="btn btn-primary">次へ</button>
+    </footer>
+
+    <!-- 絞り込みモーダル -->
+    <div id="filterModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>絞り込み条件</h2>
+          <button id="closeModal" class="close-btn">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <!-- カテゴリ絞り込み -->
+          <div class="filter-section">
+            <h3>カテゴリで絞り込み</h3>
+            <div id="categoryFilters" class="checkbox-group">
+              <!-- カテゴリ一覧が動的に生成される -->
+            </div>
+          </div>
+
+          <!-- ステータス絞り込み -->
+          <div class="filter-section">
+            <h3>学習ステータスで絞り込み</h3>
+            <div id="statusFilters" class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" value="unlearned" checked /> 未学習
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" value="review" checked /> 要復習
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" value="learned" checked /> 習得済み
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="applyFilters" class="btn btn-primary">適用</button>
+          <button id="resetFilters" class="btn btn-secondary">リセット</button>
+        </div>
+      </div>
     </div>
-    
-    <script src="script.js"></script>
-</body>
-</html> 
+
+    <!-- オーバーレイ -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- エラーメッセージ -->
+    <div id="errorMessage" class="error-message"></div>
+
+    <script defer src="script.js"></script>
+  </body>
+</html>
